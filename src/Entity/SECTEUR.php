@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SECTEURRepository;
+use App\Repository\secteurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SECTEURRepository::class)
+ * @ORM\Entity(repositoryClass=secteurRepository::class)
  */
 class secteur
 {
@@ -30,12 +30,12 @@ class secteur
     private $SEC_LIBELLE;
 
     /**
-     * @ORM\OneToMany(targetEntity=VISITEUR::class, mappedBy="secteur")
+     * @ORM\OneToMany(targetEntity=visiteur::class, mappedBy="secteur")
      */
     private $responsables;
 
     /**
-     * @ORM\OneToMany(targetEntity=REGION::class, mappedBy="SECTEUR")
+     * @ORM\OneToMany(targetEntity=region::class, mappedBy="secteur")
      */
     private $regions;
 
@@ -75,14 +75,14 @@ class secteur
     }
 
     /**
-     * @return Collection|VISITEUR[]
+     * @return Collection|visiteur[]
      */
     public function getResponsables(): Collection
     {
         return $this->responsables;
     }
 
-    public function addResponsable(VISITEUR $responsable): self
+    public function addResponsable(visiteur $responsable): self
     {
         if (!$this->responsables->contains($responsable)) {
             $this->responsables[] = $responsable;
@@ -92,7 +92,7 @@ class secteur
         return $this;
     }
 
-    public function removeResponsable(VISITEUR $responsable): self
+    public function removeResponsable(visiteur $responsable): self
     {
         if ($this->responsables->removeElement($responsable)) {
             // set the owning side to null (unless already changed)
@@ -105,29 +105,29 @@ class secteur
     }
 
     /**
-     * @return Collection|REGION[]
+     * @return Collection|region[]
      */
     public function getRegions(): Collection
     {
         return $this->regions;
     }
 
-    public function addRegion(REGION $region): self
+    public function addRegion(region $region): self
     {
         if (!$this->regions->contains($region)) {
             $this->regions[] = $region;
-            $region->setSECTEUR($this);
+            $region->setsecteur($this);
         }
 
         return $this;
     }
 
-    public function removeRegion(REGION $region): self
+    public function removeRegion(region $region): self
     {
         if ($this->regions->removeElement($region)) {
             // set the owning side to null (unless already changed)
-            if ($region->getSECTEUR() === $this) {
-                $region->setSECTEUR(null);
+            if ($region->getsecteur() === $this) {
+                $region->setsecteur(null);
             }
         }
 

@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\TYPEINDIVIDURepository;
+use App\Repository\typeIndividuRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TYPEINDIVIDURepository::class)
+ * @ORM\Entity(repositoryClass=typeIndividuRepository::class)
  */
 class typeIndividu
 {

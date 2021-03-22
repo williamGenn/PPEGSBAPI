@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\PRESCRIPTIONRepository;
+use App\Repository\prescriptionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PRESCRIPTIONRepository::class)
+ * @ORM\Entity(repositoryClass=prescriptionRepository::class)
  */
 class prescription
 {
@@ -26,17 +26,17 @@ class prescription
     private $posologie;
 
     /**
-     * @ORM\ManyToOne(targetEntity=MEDICAMENT::class, inversedBy="PRESCRIPTIONs")
+     * @ORM\ManyToOne(targetEntity=medicament::class, inversedBy="prescriptions")
      */
     private $medicaments;
 
     /**
-     * @ORM\ManyToOne(targetEntity=TYPEINDIVIDU::class)
+     * @ORM\ManyToOne(targetEntity=typeIndividu::class)
      */
     private $type_individu;
 
     /**
-     * @ORM\ManyToOne(targetEntity=DOSAGE::class)
+     * @ORM\ManyToOne(targetEntity=dosage::class)
      */
     private $Dosage;
 
@@ -60,36 +60,36 @@ class prescription
         return $this;
     }
 
-    public function getMedicaments(): ?MEDICAMENT
+    public function getMedicaments(): ?medicament
     {
         return $this->medicaments;
     }
 
-    public function setMedicaments(?MEDICAMENT $medicaments): self
+    public function setMedicaments(?medicament $medicaments): self
     {
         $this->medicaments = $medicaments;
 
         return $this;
     }
 
-    public function getTypeIndividu(): ?TYPEINDIVIDU
+    public function getTypeIndividu(): ?typeIndividu
     {
         return $this->type_individu;
     }
 
-    public function setTypeIndividu(?TYPEINDIVIDU $type_individu): self
+    public function setTypeIndividu(?typeIndividu $type_individu): self
     {
         $this->type_individu = $type_individu;
 
         return $this;
     }
 
-    public function getDosage(): ?DOSAGE
+    public function getDosage(): ?dosage
     {
         return $this->Dosage;
     }
 
-    public function setDosage(?DOSAGE $Dosage): self
+    public function setDosage(?dosage $Dosage): self
     {
         $this->Dosage = $Dosage;
 

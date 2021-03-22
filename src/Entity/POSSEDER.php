@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\POSSEDERRepository;
+use App\Repository\possederRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=POSSEDERRepository::class)
+ * @ORM\Entity(repositoryClass=possederRepository::class)
  */
 class posseder
 {
@@ -30,12 +30,12 @@ class posseder
     private $CoeffPrescription;
 
     /**
-     * @ORM\ManyToOne(targetEntity=SPECIALITE::class)
+     * @ORM\ManyToOne(targetEntity=specialite::class)
      */
     private $specialite;
 
     /**
-     * @ORM\OneToMany(targetEntity=PRATICIEN::class, mappedBy="displomes")
+     * @ORM\OneToMany(targetEntity=praticien::class, mappedBy="displomes")
      */
     private $praticien;
 
@@ -73,12 +73,12 @@ class posseder
         return $this;
     }
 
-    public function getSpecialite(): ?SPECIALITE
+    public function getSpecialite(): ?specialite
     {
         return $this->specialite;
     }
 
-    public function setSpecialite(?SPECIALITE $specialite): self
+    public function setSpecialite(?specialite $specialite): self
     {
         $this->specialite = $specialite;
 
@@ -86,14 +86,14 @@ class posseder
     }
 
     /**
-     * @return Collection|PRATICIEN[]
+     * @return Collection|praticien[]
      */
     public function getPraticien(): Collection
     {
         return $this->praticien;
     }
 
-    public function addPraticien(PRATICIEN $praticien): self
+    public function addPraticien(praticien $praticien): self
     {
         if (!$this->praticien->contains($praticien)) {
             $this->praticien[] = $praticien;
@@ -103,7 +103,7 @@ class posseder
         return $this;
     }
 
-    public function removePraticien(PRATICIEN $praticien): self
+    public function removePraticien(praticien $praticien): self
     {
         if ($this->praticien->removeElement($praticien)) {
             // set the owning side to null (unless already changed)

@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\RAPPORTVISITERepository;
+use App\Repository\rapportVisiteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=RAPPORTVISITERepository::class)
+ * @ORM\Entity(repositoryClass=rapportVisiteRepository::class)
  */
 class rapportVisite
 {
@@ -41,12 +41,12 @@ class rapportVisite
     private $RAP_MOTIF;
 
     /**
-     * @ORM\ManyToOne(targetEntity=VISITEUR::class, inversedBy="rapports")
+     * @ORM\ManyToOne(targetEntity=visiteur::class, inversedBy="rapports")
      */
     private $visiteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity=PRATICIEN::class, inversedBy="RAPPORTVISITEs")
+     * @ORM\ManyToOne(targetEntity=praticien::class, inversedBy="rapportVisites")
      * @ORM\JoinColumn(nullable=false)
      */
     private $praticien;
@@ -114,24 +114,24 @@ class rapportVisite
         return $this;
     }
 
-    public function getVisiteur(): ?VISITEUR
+    public function getVisiteur(): ?visiteur
     {
         return $this->visiteur;
     }
 
-    public function setVisiteur(?VISITEUR $visiteur): self
+    public function setVisiteur(?visiteur $visiteur): self
     {
         $this->visiteur = $visiteur;
 
         return $this;
     }
 
-    public function getPraticien(): ?PRATICIEN
+    public function getPraticien(): ?praticien
     {
         return $this->praticien;
     }
 
-    public function setPraticien(?PRATICIEN $praticien): self
+    public function setPraticien(?praticien $praticien): self
     {
         $this->praticien = $praticien;
 

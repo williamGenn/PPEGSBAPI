@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Entity\FAMILLE;
+use App\Entity\famille;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method FAMILLE|null find($id, $lockMode = null, $lockVersion = null)
- * @method FAMILLE|null findOneBy(array $criteria, array $orderBy = null)
- * @method FAMILLE[]    findAll()
- * @method FAMILLE[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method famille|null find($id, $lockMode = null, $lockVersion = null)
+ * @method famille|null findOneBy(array $criteria, array $orderBy = null)
+ * @method famille[]    findAll()
+ * @method famille[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class FAMILLERepository extends ServiceEntityRepository
+class familleRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class FAMILLERepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return FAMILLE[] Returns an array of FAMILLE objects
+    //  * @return famille[] Returns an array of famille objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class FAMILLERepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?FAMILLE
+    public function findOneBySomeField($value): ?famille
     {
         return $this->createQueryBuilder('f')
             ->andWhere('f.exampleField = :val')

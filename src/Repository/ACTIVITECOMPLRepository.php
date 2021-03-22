@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method ACTIVITECOMPL|null find($id, $lockMode = null, $lockVersion = null)
- * @method ACTIVITECOMPL|null findOneBy(array $criteria, array $orderBy = null)
- * @method ACTIVITECOMPL[]    findAll()
- * @method ACTIVITECOMPL[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method activitecompl|null find($id, $lockMode = null, $lockVersion = null)
+ * @method activitecompl|null findOneBy(array $criteria, array $orderBy = null)
+ * @method activitecompl[]    findAll()
+ * @method activitecompl[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ACTIVITECOMPLRepository extends ServiceEntityRepository
+class activitecomplRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class ACTIVITECOMPLRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return ACTIVITECOMPL[] Returns an array of ACTIVITECOMPL objects
+    //  * @return activitecompl[] Returns an array of activitecompl objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class ACTIVITECOMPLRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?ACTIVITECOMPL
+    public function findOneBySomeField($value): ?activitecompl
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

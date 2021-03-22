@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\DOSAGERepository;
+use App\Repository\dosageRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=DOSAGERepository::class)
+ * @ORM\Entity(repositoryClass=dosageRepository::class)
  */
 class dosage
 {

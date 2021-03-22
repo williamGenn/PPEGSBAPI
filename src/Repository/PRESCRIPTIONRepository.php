@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method PRESCRIPTION|null find($id, $lockMode = null, $lockVersion = null)
- * @method PRESCRIPTION|null findOneBy(array $criteria, array $orderBy = null)
- * @method PRESCRIPTION[]    findAll()
- * @method PRESCRIPTION[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method prescription|null find($id, $lockMode = null, $lockVersion = null)
+ * @method prescription|null findOneBy(array $criteria, array $orderBy = null)
+ * @method prescription[]    findAll()
+ * @method prescription[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PRESCRIPTIONRepository extends ServiceEntityRepository
+class prescriptionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class PRESCRIPTIONRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return PRESCRIPTION[] Returns an array of PRESCRIPTION objects
+    //  * @return prescription[] Returns an array of prescription objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class PRESCRIPTIONRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?PRESCRIPTION
+    public function findOneBySomeField($value): ?prescription
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method RAPPORTVISITE|null find($id, $lockMode = null, $lockVersion = null)
- * @method RAPPORTVISITE|null findOneBy(array $criteria, array $orderBy = null)
- * @method RAPPORTVISITE[]    findAll()
- * @method RAPPORTVISITE[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method rapportVisite|null find($id, $lockMode = null, $lockVersion = null)
+ * @method rapportVisite|null findOneBy(array $criteria, array $orderBy = null)
+ * @method rapportVisite[]    findAll()
+ * @method rapportVisite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class RAPPORTVISITERepository extends ServiceEntityRepository
+class rapportVisiteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class RAPPORTVISITERepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return RAPPORTVISITE[] Returns an array of RAPPORTVISITE objects
+    //  * @return rapportVisite[] Returns an array of rapportVisite objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class RAPPORTVISITERepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?RAPPORTVISITE
+    public function findOneBySomeField($value): ?rapportVisite
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')

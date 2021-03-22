@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\FAMILLERepository;
+use App\Repository\familleRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=FAMILLERepository::class)
+ * @ORM\Entity(repositoryClass=familleRepository::class)
  */
 class famille
 {
@@ -30,13 +30,13 @@ class famille
     private $FAM_LIBELLE;
 
     /**
-     * @ORM\OneToMany(targetEntity=MEDICAMENT::class, mappedBy="FAMILLE")
+     * @ORM\OneToMany(targetEntity=medicament::class, mappedBy="famille")
      */
-    private $MEDICAMENTs;
+    private $medicaments;
 
     public function __construct()
     {
-        $this->MEDICAMENTs = new ArrayCollection();
+        $this->medicaments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -69,29 +69,29 @@ class famille
     }
 
     /**
-     * @return Collection|MEDICAMENT[]
+     * @return Collection|medicament[]
      */
-    public function getMEDICAMENTs(): Collection
+    public function getmedicaments(): Collection
     {
-        return $this->MEDICAMENTs;
+        return $this->medicaments;
     }
 
-    public function addMEDICAMENT(MEDICAMENT $MEDICAMENT): self
+    public function addmedicament(medicament $medicament): self
     {
-        if (!$this->MEDICAMENTs->contains($MEDICAMENT)) {
-            $this->MEDICAMENTs[] = $MEDICAMENT;
-            $MEDICAMENT->setFAMILLE($this);
+        if (!$this->medicaments->contains($medicament)) {
+            $this->medicaments[] = $medicament;
+            $medicament->setfamille($this);
         }
 
         return $this;
     }
 
-    public function removeMEDICAMENT(MEDICAMENT $MEDICAMENT): self
+    public function removemedicament(medicament $medicament): self
     {
-        if ($this->MEDICAMENTs->removeElement($MEDICAMENT)) {
+        if ($this->medicaments->removeElement($medicament)) {
             // set the owning side to null (unless already changed)
-            if ($MEDICAMENT->getFAMILLE() === $this) {
-                $MEDICAMENT->setFAMILLE(null);
+            if ($medicament->getfamille() === $this) {
+                $medicament->setfamille(null);
             }
         }
 

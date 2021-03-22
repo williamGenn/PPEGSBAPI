@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\ACTIVITECOMPLRepository;
+use App\Repository\activitecomplRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=ACTIVITECOMPLRepository::class)
+ * @ORM\Entity(repositoryClass=activitecomplRepository::class)
  */
 class activitecompl
 {
@@ -45,12 +45,12 @@ class activitecompl
     private $AC_MOTIF;
 
     /**
-     * @ORM\ManyToMany(targetEntity=VISITEUR::class, mappedBy="acitivites_complementaires")
+     * @ORM\ManyToMany(targetEntity=visiteur::class, mappedBy="acitivites_complementaires")
      */
     private $Realisateurs;
 
     /**
-     * @ORM\ManyToMany(targetEntity=PRATICIEN::class, inversedBy="invitations")
+     * @ORM\ManyToMany(targetEntity=praticien::class, inversedBy="invitations")
      */
     private $invites;
 
@@ -122,14 +122,14 @@ class activitecompl
     }
 
     /**
-     * @return Collection|VISITEUR[]
+     * @return Collection|visiteur[]
      */
     public function getRealisateurs(): Collection
     {
         return $this->Realisateurs;
     }
 
-    public function addRealisateur(VISITEUR $realisateur): self
+    public function addRealisateur(visiteur $realisateur): self
     {
         if (!$this->Realisateurs->contains($realisateur)) {
             $this->Realisateurs[] = $realisateur;
@@ -139,7 +139,7 @@ class activitecompl
         return $this;
     }
 
-    public function removeRealisateur(VISITEUR $realisateur): self
+    public function removeRealisateur(visiteur $realisateur): self
     {
         if ($this->Realisateurs->removeElement($realisateur)) {
             $realisateur->removeAcitivitesComplementaire($this);
@@ -149,14 +149,14 @@ class activitecompl
     }
 
     /**
-     * @return Collection|PRATICIEN[]
+     * @return Collection|praticien[]
      */
     public function getInvites(): Collection
     {
         return $this->invites;
     }
 
-    public function addInvite(PRATICIEN $invite): self
+    public function addInvite(praticien $invite): self
     {
         if (!$this->invites->contains($invite)) {
             $this->invites[] = $invite;
@@ -165,7 +165,7 @@ class activitecompl
         return $this;
     }
 
-    public function removeInvite(PRATICIEN $invite): self
+    public function removeInvite(praticien $invite): self
     {
         $this->invites->removeElement($invite);
 

@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method PRATICIEN|null find($id, $lockMode = null, $lockVersion = null)
- * @method PRATICIEN|null findOneBy(array $criteria, array $orderBy = null)
- * @method PRATICIEN[]    findAll()
- * @method PRATICIEN[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method praticien|null find($id, $lockMode = null, $lockVersion = null)
+ * @method praticien|null findOneBy(array $criteria, array $orderBy = null)
+ * @method praticien[]    findAll()
+ * @method praticien[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PRATICIENRepository extends ServiceEntityRepository
+class praticienRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class PRATICIENRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return PRATICIEN[] Returns an array of PRATICIEN objects
+    //  * @return praticien[] Returns an array of praticien objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class PRATICIENRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?PRATICIEN
+    public function findOneBySomeField($value): ?praticien
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
-use App\Repository\LABORepository;
+use App\Repository\laboRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+
 
 /**
- * @ORM\Entity(repositoryClass=LABORepository::class)
+ * @ApiResource()
+ * @ORM\Entity(repositoryClass=laboRepository::class)
  */
 class labo
 {
@@ -35,7 +38,7 @@ class labo
     private $LAB_CHEFVENTE;
 
     /**
-     * @ORM\OneToMany(targetEntity=VISITEUR::class, mappedBy="departement")
+     * @ORM\OneToMany(targetEntity=visiteur::class, mappedBy="departement")
      */
     private $Visiteurs;
 
@@ -86,14 +89,14 @@ class labo
     }
 
     /**
-     * @return Collection|VISITEUR[]
+     * @return Collection|visiteur[]
      */
     public function getVisiteurs(): Collection
     {
         return $this->Visiteurs;
     }
 
-    public function addVisiteur(VISITEUR $visiteur): self
+    public function addVisiteur(visiteur $visiteur): self
     {
         if (!$this->Visiteurs->contains($visiteur)) {
             $this->Visiteurs[] = $visiteur;
@@ -103,7 +106,7 @@ class labo
         return $this;
     }
 
-    public function removeVisiteur(VISITEUR $visiteur): self
+    public function removeVisiteur(visiteur $visiteur): self
     {
         if ($this->Visiteurs->removeElement($visiteur)) {
             // set the owning side to null (unless already changed)

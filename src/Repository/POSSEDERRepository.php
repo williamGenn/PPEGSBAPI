@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method POSSEDER|null find($id, $lockMode = null, $lockVersion = null)
- * @method POSSEDER|null findOneBy(array $criteria, array $orderBy = null)
- * @method POSSEDER[]    findAll()
- * @method POSSEDER[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method posseder|null find($id, $lockMode = null, $lockVersion = null)
+ * @method posseder|null findOneBy(array $criteria, array $orderBy = null)
+ * @method posseder[]    findAll()
+ * @method posseder[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class POSSEDERRepository extends ServiceEntityRepository
+class possederRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class POSSEDERRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return POSSEDER[] Returns an array of POSSEDER objects
+    //  * @return posseder[] Returns an array of posseder objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class POSSEDERRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?POSSEDER
+    public function findOneBySomeField($value): ?posseder
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

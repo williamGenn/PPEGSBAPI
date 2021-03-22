@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\VISITEURRepository;
+use App\Repository\visiteurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=VISITEURRepository::class)
+ * @ORM\Entity(repositoryClass=visiteurRepository::class)
  */
 class visiteur
 {
@@ -50,23 +50,23 @@ class visiteur
     private $VIs_DATEEMBAUCHE;
 
     /**
-     * @ORM\ManyToOne(targetEntity=SECTEUR::class, inversedBy="responsables")
+     * @ORM\ManyToOne(targetEntity=secteur::class, inversedBy="responsables")
      */
     private $secteur;
 
     /**
-     * @ORM\OneToMany(targetEntity=RAPPORTVISITE::class, mappedBy="visiteur")
+     * @ORM\OneToMany(targetEntity=rapportVisite::class, mappedBy="visiteur")
      */
     private $rapports;
 
     /**
-     * @ORM\ManyToOne(targetEntity=LABO::class, inversedBy="Visiteurs")
+     * @ORM\ManyToOne(targetEntity=labo::class, inversedBy="Visiteurs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $departement;
 
     /**
-     * @ORM\ManyToMany(targetEntity=ACTIVITECOMPL::class, inversedBy="Realisateurs")
+     * @ORM\ManyToMany(targetEntity=activitecompl::class, inversedBy="Realisateurs")
      */
     private $acitivites_complementaires;
 
@@ -158,12 +158,12 @@ class visiteur
         return $this;
     }
 
-    public function getSecteur(): ?SECTEUR
+    public function getSecteur(): ?secteur
     {
         return $this->secteur;
     }
 
-    public function setSecteur(?SECTEUR $secteur): self
+    public function setSecteur(?secteur $secteur): self
     {
         $this->secteur = $secteur;
 
@@ -171,14 +171,14 @@ class visiteur
     }
 
     /**
-     * @return Collection|RAPPORTVISITE[]
+     * @return Collection|rapportVisite[]
      */
     public function getRapports(): Collection
     {
         return $this->rapports;
     }
 
-    public function addRapport(RAPPORTVISITE $rapport): self
+    public function addRapport(rapportVisite $rapport): self
     {
         if (!$this->rapports->contains($rapport)) {
             $this->rapports[] = $rapport;
@@ -188,7 +188,7 @@ class visiteur
         return $this;
     }
 
-    public function removeRapport(RAPPORTVISITE $rapport): self
+    public function removeRapport(rapportVisite $rapport): self
     {
         if ($this->rapports->removeElement($rapport)) {
             // set the owning side to null (unless already changed)
@@ -200,12 +200,12 @@ class visiteur
         return $this;
     }
 
-    public function getDepartement(): ?LABO
+    public function getDepartement(): ?labo
     {
         return $this->departement;
     }
 
-    public function setDepartement(?LABO $departement): self
+    public function setDepartement(?labo $departement): self
     {
         $this->departement = $departement;
 
@@ -213,14 +213,14 @@ class visiteur
     }
 
     /**
-     * @return Collection|ACTIVITECOMPL[]
+     * @return Collection|activitecompl[]
      */
     public function getAcitivitesComplementaires(): Collection
     {
         return $this->acitivites_complementaires;
     }
 
-    public function addAcitivitesComplementaire(ACTIVITECOMPL $acitivitesComplementaire): self
+    public function addAcitivitesComplementaire(activitecompl $acitivitesComplementaire): self
     {
         if (!$this->acitivites_complementaires->contains($acitivitesComplementaire)) {
             $this->acitivites_complementaires[] = $acitivitesComplementaire;
@@ -229,7 +229,7 @@ class visiteur
         return $this;
     }
 
-    public function removeAcitivitesComplementaire(ACTIVITECOMPL $acitivitesComplementaire): self
+    public function removeAcitivitesComplementaire(activitecompl $acitivitesComplementaire): self
     {
         $this->acitivites_complementaires->removeElement($acitivitesComplementaire);
 

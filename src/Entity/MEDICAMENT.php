@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\MEDICAMENTRepository;
+use App\Repository\medicamentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MEDICAMENTRepository::class)
+ * @ORM\Entity(repositoryClass=medicamentRepository::class)
  */
 class medicament
 {
@@ -30,9 +30,9 @@ class medicament
     private $MED_NOMCOMMERCIAL;
 
     /**
-     * @ORM\ManyToOne(targetEntity=FAMILLE::class, inversedBy="mEDICAMENTs")
+     * @ORM\ManyToOne(targetEntity=famille::class, inversedBy="mEDICAMENTs")
      */
-    private $FAMILLE;
+    private $famille;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -50,22 +50,22 @@ class medicament
     private $MED_PRIXECHANTILLON;
 
     /**
-     * @ORM\ManyToMany(targetEntity=COMPOSANT::class)
+     * @ORM\ManyToMany(targetEntity=composant::class)
      */
-    private $COMPOSANTs;
+    private $composants;
 
     /**
-     * @ORM\ManyToMany(targetEntity=MEDICAMENT::class, inversedBy="perturbes")
+     * @ORM\ManyToMany(targetEntity=medicament::class, inversedBy="perturbes")
      */
     private $perturbateurs;
 
     /**
-     * @ORM\ManyToMany(targetEntity=MEDICAMENT::class, mappedBy="perturbateurs")
+     * @ORM\ManyToMany(targetEntity=medicament::class, mappedBy="perturbateurs")
      */
     private $perturbes;
 
     /**
-     * @ORM\ManyToMany(targetEntity=PRESENTATION::class, inversedBy="medicaments")
+     * @ORM\ManyToMany(targetEntity=presentation::class, inversedBy="medicaments")
      */
     private $presentations;
 
@@ -81,9 +81,9 @@ class medicament
     private $constitution;
 
     /**
-     * @ORM\OneToMany(targetEntity=PRESCRIPTION::class, mappedBy="medicaments")
+     * @ORM\OneToMany(targetEntity=prescription::class, mappedBy="medicaments")
      */
-    private $PRESCRIPTIONs;
+    private $prescriptions;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -92,12 +92,12 @@ class medicament
 
     public function __construct()
     {
-        $this->COMPOSANTs = new ArrayCollection();
+        $this->composants = new ArrayCollection();
         $this->perturbateurs = new ArrayCollection();
         $this->perturbes = new ArrayCollection();
         $this->presentations = new ArrayCollection();
         $this->offres = new ArrayCollection();
-        $this->PRESCRIPTIONs = new ArrayCollection();
+        $this->prescriptions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,14 +129,14 @@ class medicament
         return $this;
     }
 
-    public function getFAMILLE(): ?FAMILLE
+    public function getfamille(): ?famille
     {
-        return $this->FAMILLE;
+        return $this->famille;
     }
 
-    public function setFAMILLE(?FAMILLE $FAMILLE): self
+    public function setfamille(?famille $famille): self
     {
-        $this->FAMILLE = $FAMILLE;
+        $this->famille = $famille;
 
         return $this;
     }
@@ -178,25 +178,25 @@ class medicament
     }
 
     /**
-     * @return Collection|COMPOSANT[]
+     * @return Collection|composant[]
      */
-    public function getCOMPOSANTs(): Collection
+    public function getcomposants(): Collection
     {
-        return $this->COMPOSANTs;
+        return $this->composants;
     }
 
-    public function addCOMPOSANT(COMPOSANT $cOMPOSANT): self
+    public function addcomposant(composant $cOMPOSANT): self
     {
-        if (!$this->COMPOSANTs->contains($cOMPOSANT)) {
-            $this->COMPOSANTs[] = $cOMPOSANT;
+        if (!$this->composants->contains($cOMPOSANT)) {
+            $this->composants[] = $cOMPOSANT;
         }
 
         return $this;
     }
 
-    public function removeCOMPOSANT(COMPOSANT $cOMPOSANT): self
+    public function removecomposant(composant $cOMPOSANT): self
     {
-        $this->COMPOSANTs->removeElement($cOMPOSANT);
+        $this->composants->removeElement($cOMPOSANT);
 
         return $this;
     }
@@ -253,14 +253,14 @@ class medicament
     }
 
     /**
-     * @return Collection|PRESENTATION[]
+     * @return Collection|presentation[]
      */
     public function getPresentations(): Collection
     {
         return $this->presentations;
     }
 
-    public function addPresentation(PRESENTATION $presentation): self
+    public function addPresentation(presentation $presentation): self
     {
         if (!$this->presentations->contains($presentation)) {
             $this->presentations[] = $presentation;
@@ -269,7 +269,7 @@ class medicament
         return $this;
     }
 
-    public function removePresentation(PRESENTATION $presentation): self
+    public function removePresentation(presentation $presentation): self
     {
         $this->presentations->removeElement($presentation);
 
@@ -316,26 +316,26 @@ class medicament
     }
 
     /**
-     * @return Collection|PRESCRIPTION[]
+     * @return Collection|prescription[]
      */
-    public function getPRESCRIPTIONs(): Collection
+    public function getprescriptions(): Collection
     {
-        return $this->PRESCRIPTIONs;
+        return $this->prescriptions;
     }
 
-    public function addPRESCRIPTION(PRESCRIPTION $pRESCRIPTION): self
+    public function addprescription(prescription $pRESCRIPTION): self
     {
-        if (!$this->PRESCRIPTIONs->contains($pRESCRIPTION)) {
-            $this->PRESCRIPTIONs[] = $pRESCRIPTION;
+        if (!$this->prescriptions->contains($pRESCRIPTION)) {
+            $this->prescriptions[] = $pRESCRIPTION;
             $pRESCRIPTION->setMedicaments($this);
         }
 
         return $this;
     }
 
-    public function removePRESCRIPTION(PRESCRIPTION $pRESCRIPTION): self
+    public function removeprescription(prescription $pRESCRIPTION): self
     {
-        if ($this->PRESCRIPTIONs->removeElement($pRESCRIPTION)) {
+        if ($this->prescriptions->removeElement($pRESCRIPTION)) {
             // set the owning side to null (unless already changed)
             if ($pRESCRIPTION->getMedicaments() === $this) {
                 $pRESCRIPTION->setMedicaments(null);

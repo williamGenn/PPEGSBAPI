@@ -25,12 +25,12 @@ class Constitution
     private $Quantit;
 
     /**
-     * @ORM\OneToMany(targetEntity=MEDICAMENT::class, mappedBy="constitution")
+     * @ORM\OneToMany(targetEntity=medicament::class, mappedBy="constitution")
      */
     private $medicaments;
 
     /**
-     * @ORM\ManyToMany(targetEntity=COMPOSANT::class, inversedBy="constitutions")
+     * @ORM\ManyToMany(targetEntity=composant::class, inversedBy="constitutions")
      */
     private $composants;
 
@@ -58,14 +58,14 @@ class Constitution
     }
 
     /**
-     * @return Collection|MEDICAMENT[]
+     * @return Collection|medicament[]
      */
     public function getMedicaments(): Collection
     {
         return $this->medicaments;
     }
 
-    public function addMedicament(MEDICAMENT $medicament): self
+    public function addMedicament(medicament $medicament): self
     {
         if (!$this->medicaments->contains($medicament)) {
             $this->medicaments[] = $medicament;
@@ -75,7 +75,7 @@ class Constitution
         return $this;
     }
 
-    public function removeMedicament(MEDICAMENT $medicament): self
+    public function removeMedicament(medicament $medicament): self
     {
         if ($this->medicaments->removeElement($medicament)) {
             // set the owning side to null (unless already changed)
@@ -88,14 +88,14 @@ class Constitution
     }
 
     /**
-     * @return Collection|COMPOSANT[]
+     * @return Collection|composant[]
      */
     public function getComposants(): Collection
     {
         return $this->composants;
     }
 
-    public function addComposant(COMPOSANT $composant): self
+    public function addComposant(composant $composant): self
     {
         if (!$this->composants->contains($composant)) {
             $this->composants[] = $composant;
@@ -104,7 +104,7 @@ class Constitution
         return $this;
     }
 
-    public function removeComposant(COMPOSANT $composant): self
+    public function removeComposant(composant $composant): self
     {
         $this->composants->removeElement($composant);
 

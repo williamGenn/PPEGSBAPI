@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method SPECIALITE|null find($id, $lockMode = null, $lockVersion = null)
- * @method SPECIALITE|null findOneBy(array $criteria, array $orderBy = null)
- * @method SPECIALITE[]    findAll()
- * @method SPECIALITE[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method specialite|null find($id, $lockMode = null, $lockVersion = null)
+ * @method specialite|null findOneBy(array $criteria, array $orderBy = null)
+ * @method specialite[]    findAll()
+ * @method specialite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SPECIALITERepository extends ServiceEntityRepository
+class specialiteRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class SPECIALITERepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return SPECIALITE[] Returns an array of SPECIALITE objects
+    //  * @return specialite[] Returns an array of specialite objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SPECIALITERepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?SPECIALITE
+    public function findOneBySomeField($value): ?specialite
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

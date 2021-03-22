@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\TYPEPRATICIENRepository;
+use App\Repository\typePraticienRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=TYPEPRATICIENRepository::class)
+ * @ORM\Entity(repositoryClass=typePraticienRepository::class)
  */
 class typePraticien
 {
@@ -35,13 +35,13 @@ class typePraticien
     private $TYP_LIEU;
 
     /**
-     * @ORM\OneToMany(targetEntity=PRATICIEN::class, mappedBy="type")
+     * @ORM\OneToMany(targetEntity=praticien::class, mappedBy="type")
      */
-    private $PRATICIENs;
+    private $praticiens;
 
     public function __construct()
     {
-        $this->PRATICIENs = new ArrayCollection();
+        $this->praticiens = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,26 +86,26 @@ class typePraticien
     }
 
     /**
-     * @return Collection|PRATICIEN[]
+     * @return Collection|praticien[]
      */
-    public function getPRATICIENs(): Collection
+    public function getpraticiens(): Collection
     {
-        return $this->PRATICIENs;
+        return $this->praticiens;
     }
 
-    public function addPRATICIEN(PRATICIEN $pRATICIEN): self
+    public function addpraticien(praticien $pRATICIEN): self
     {
-        if (!$this->PRATICIENs->contains($pRATICIEN)) {
-            $this->PRATICIENs[] = $pRATICIEN;
+        if (!$this->praticiens->contains($pRATICIEN)) {
+            $this->praticiens[] = $pRATICIEN;
             $pRATICIEN->setType($this);
         }
 
         return $this;
     }
 
-    public function removePRATICIEN(PRATICIEN $pRATICIEN): self
+    public function removepraticien(praticien $pRATICIEN): self
     {
-        if ($this->PRATICIENs->removeElement($pRATICIEN)) {
+        if ($this->praticiens->removeElement($pRATICIEN)) {
             // set the owning side to null (unless already changed)
             if ($pRATICIEN->getType() === $this) {
                 $pRATICIEN->setType(null);

@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\PRATICIENRepository;
+use App\Repository\praticienRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PRATICIENRepository::class)
+ * @ORM\Entity(repositoryClass=praticienRepository::class)
  */
 class praticien
 {
@@ -51,23 +51,23 @@ class praticien
     private $PRA_COEFNOTORIETE;
 
     /**
-     * @ORM\OneToMany(targetEntity=RAPPORTVISITE::class, mappedBy="praticien")
+     * @ORM\OneToMany(targetEntity=rapportVisite::class, mappedBy="praticien")
      */
-    private $RAPPORTVISITEs;
+    private $rapportVisites;
 
     /**
-     * @ORM\ManyToOne(targetEntity=TYPEPRATICIEN::class, inversedBy="PRATICIENs")
+     * @ORM\ManyToOne(targetEntity=typePraticien::class, inversedBy="praticiens")
      * @ORM\JoinColumn(nullable=false)
      */
     private $type;
 
     /**
-     * @ORM\ManyToOne(targetEntity=POSSEDER::class, inversedBy="praticien")
+     * @ORM\ManyToOne(targetEntity=posseder::class, inversedBy="praticien")
      */
     private $displomes;
 
     /**
-     * @ORM\ManyToMany(targetEntity=ACTIVITECOMPL::class, mappedBy="invites")
+     * @ORM\ManyToMany(targetEntity=activitecompl::class, mappedBy="invites")
      */
     private $invitations;
 
@@ -78,7 +78,7 @@ class praticien
 
     public function __construct()
     {
-        $this->RAPPORTVISITEs = new ArrayCollection();
+        $this->rapportVisites = new ArrayCollection();
         $this->invitations = new ArrayCollection();
     }
 
@@ -160,26 +160,26 @@ class praticien
     }
 
     /**
-     * @return Collection|RAPPORTVISITE[]
+     * @return Collection|rapportVisite[]
      */
-    public function getRAPPORTVISITEs(): Collection
+    public function getrapportVisites(): Collection
     {
-        return $this->RAPPORTVISITEs;
+        return $this->rapportVisites;
     }
 
-    public function addRAPPORTVISITE(RAPPORTVISITE $rAPPORTVISITE): self
+    public function addrapportVisite(rapportVisite $rAPPORTVISITE): self
     {
-        if (!$this->RAPPORTVISITEs->contains($rAPPORTVISITE)) {
-            $this->RAPPORTVISITEs[] = $rAPPORTVISITE;
+        if (!$this->rapportVisites->contains($rAPPORTVISITE)) {
+            $this->rapportVisites[] = $rAPPORTVISITE;
             $rAPPORTVISITE->setPraticien($this);
         }
 
         return $this;
     }
 
-    public function removeRAPPORTVISITE(RAPPORTVISITE $rAPPORTVISITE): self
+    public function removerapportVisite(rapportVisite $rAPPORTVISITE): self
     {
-        if ($this->RAPPORTVISITEs->removeElement($rAPPORTVISITE)) {
+        if ($this->rapportVisites->removeElement($rAPPORTVISITE)) {
             // set the owning side to null (unless already changed)
             if ($rAPPORTVISITE->getPraticien() === $this) {
                 $rAPPORTVISITE->setPraticien(null);
@@ -189,24 +189,24 @@ class praticien
         return $this;
     }
 
-    public function getType(): ?TYPEPRATICIEN
+    public function getType(): ?typePraticien
     {
         return $this->type;
     }
 
-    public function setType(?TYPEPRATICIEN $type): self
+    public function setType(?typePraticien $type): self
     {
         $this->type = $type;
 
         return $this;
     }
 
-    public function getDisplomes(): ?POSSEDER
+    public function getDisplomes(): ?posseder
     {
         return $this->displomes;
     }
 
-    public function setDisplomes(?POSSEDER $displomes): self
+    public function setDisplomes(?posseder $displomes): self
     {
         $this->displomes = $displomes;
 
@@ -214,14 +214,14 @@ class praticien
     }
 
     /**
-     * @return Collection|ACTIVITECOMPL[]
+     * @return Collection|activitecompl[]
      */
     public function getInvitations(): Collection
     {
         return $this->invitations;
     }
 
-    public function addInvitation(ACTIVITECOMPL $invitation): self
+    public function addInvitation(activitecompl $invitation): self
     {
         if (!$this->invitations->contains($invitation)) {
             $this->invitations[] = $invitation;
@@ -231,7 +231,7 @@ class praticien
         return $this;
     }
 
-    public function removeInvitation(ACTIVITECOMPL $invitation): self
+    public function removeInvitation(activitecompl $invitation): self
     {
         if ($this->invitations->removeElement($invitation)) {
             $invitation->removeInvite($this);

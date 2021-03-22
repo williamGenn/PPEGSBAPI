@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method REGION|null find($id, $lockMode = null, $lockVersion = null)
- * @method REGION|null findOneBy(array $criteria, array $orderBy = null)
- * @method REGION[]    findAll()
- * @method REGION[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method region|null find($id, $lockMode = null, $lockVersion = null)
+ * @method region|null findOneBy(array $criteria, array $orderBy = null)
+ * @method region[]    findAll()
+ * @method region[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class REGIONRepository extends ServiceEntityRepository
+class regionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class REGIONRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return REGION[] Returns an array of REGION objects
+    //  * @return region[] Returns an array of region objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class REGIONRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?REGION
+    public function findOneBySomeField($value): ?region
     {
         return $this->createQueryBuilder('r')
             ->andWhere('r.exampleField = :val')

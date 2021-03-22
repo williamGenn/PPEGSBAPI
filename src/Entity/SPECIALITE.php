@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\SPECIALITERepository;
+use App\Repository\specialiteRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=SPECIALITERepository::class)
+ * @ORM\Entity(repositoryClass=specialiteRepository::class)
  */
 class specialite
 {

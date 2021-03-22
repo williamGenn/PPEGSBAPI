@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method TYPEPRATICIEN|null find($id, $lockMode = null, $lockVersion = null)
- * @method TYPEPRATICIEN|null findOneBy(array $criteria, array $orderBy = null)
- * @method TYPEPRATICIEN[]    findAll()
- * @method TYPEPRATICIEN[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method typePraticien|null find($id, $lockMode = null, $lockVersion = null)
+ * @method typePraticien|null findOneBy(array $criteria, array $orderBy = null)
+ * @method typePraticien[]    findAll()
+ * @method typePraticien[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class TYPEPRATICIENRepository extends ServiceEntityRepository
+class typePraticienRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class TYPEPRATICIENRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return TYPEPRATICIEN[] Returns an array of TYPEPRATICIEN objects
+    //  * @return typePraticien[] Returns an array of typePraticien objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class TYPEPRATICIENRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?TYPEPRATICIEN
+    public function findOneBySomeField($value): ?typePraticien
     {
         return $this->createQueryBuilder('t')
             ->andWhere('t.exampleField = :val')

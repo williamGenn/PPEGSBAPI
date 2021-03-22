@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method PRESENTATION|null find($id, $lockMode = null, $lockVersion = null)
- * @method PRESENTATION|null findOneBy(array $criteria, array $orderBy = null)
- * @method PRESENTATION[]    findAll()
- * @method PRESENTATION[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method presentation|null find($id, $lockMode = null, $lockVersion = null)
+ * @method presentation|null findOneBy(array $criteria, array $orderBy = null)
+ * @method presentation[]    findAll()
+ * @method presentation[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PRESENTATIONRepository extends ServiceEntityRepository
+class presentationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class PRESENTATIONRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return PRESENTATION[] Returns an array of PRESENTATION objects
+    //  * @return presentation[] Returns an array of presentation objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class PRESENTATIONRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?PRESENTATION
+    public function findOneBySomeField($value): ?presentation
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

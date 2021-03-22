@@ -3,11 +3,11 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\REGIONRepository;
+use App\Repository\regionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=REGIONRepository::class)
+ * @ORM\Entity(repositoryClass=regionRepository::class)
  */
 class region
 {
@@ -29,10 +29,10 @@ class region
     private $REG_NOM;
 
     /**
-     * @ORM\ManyToOne(targetEntity=SECTEUR::class, inversedBy="regions")
+     * @ORM\ManyToOne(targetEntity=secteur::class, inversedBy="regions")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $SECTEUR;
+    private $secteur;
 
     public function getId(): ?int
     {
@@ -63,14 +63,14 @@ class region
         return $this;
     }
 
-    public function getSECTEUR(): ?SECTEUR
+    public function getsecteur(): ?secteur
     {
-        return $this->SECTEUR;
+        return $this->secteur;
     }
 
-    public function setSECTEUR(?SECTEUR $SECTEUR): self
+    public function setsecteur(?secteur $secteur): self
     {
-        $this->SECTEUR = $SECTEUR;
+        $this->secteur = $secteur;
 
         return $this;
     }

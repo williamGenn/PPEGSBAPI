@@ -2,17 +2,17 @@
 
 namespace App\Repository;
 
-use App\Entity\DOSAGE;
+use App\Entity\dosage;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method DOSAGE|null find($id, $lockMode = null, $lockVersion = null)
- * @method DOSAGE|null findOneBy(array $criteria, array $orderBy = null)
- * @method DOSAGE[]    findAll()
- * @method DOSAGE[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method dosage|null find($id, $lockMode = null, $lockVersion = null)
+ * @method dosage|null findOneBy(array $criteria, array $orderBy = null)
+ * @method dosage[]    findAll()
+ * @method dosage[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class DOSAGERepository extends ServiceEntityRepository
+class dosageRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class DOSAGERepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return DOSAGE[] Returns an array of DOSAGE objects
+    //  * @return dosage[] Returns an array of dosage objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class DOSAGERepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?DOSAGE
+    public function findOneBySomeField($value): ?dosage
     {
         return $this->createQueryBuilder('d')
             ->andWhere('d.exampleField = :val')

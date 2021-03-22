@@ -7,12 +7,12 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method SECTEUR|null find($id, $lockMode = null, $lockVersion = null)
- * @method SECTEUR|null findOneBy(array $criteria, array $orderBy = null)
- * @method SECTEUR[]    findAll()
- * @method SECTEUR[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method secteur|null find($id, $lockMode = null, $lockVersion = null)
+ * @method secteur|null findOneBy(array $criteria, array $orderBy = null)
+ * @method secteur[]    findAll()
+ * @method secteur[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SECTEURRepository extends ServiceEntityRepository
+class secteurRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -20,7 +20,7 @@ class SECTEURRepository extends ServiceEntityRepository
     }
 
     // /**
-    //  * @return SECTEUR[] Returns an array of SECTEUR objects
+    //  * @return secteur[] Returns an array of secteur objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class SECTEURRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?SECTEUR
+    public function findOneBySomeField($value): ?secteur
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.exampleField = :val')

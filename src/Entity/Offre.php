@@ -25,13 +25,13 @@ class Offre
     private $Quantite;
 
     /**
-     * @ORM\ManyToOne(targetEntity=RAPPORTVISITE::class, inversedBy="offres")
+     * @ORM\ManyToOne(targetEntity=rapportVisite::class, inversedBy="offres")
      * @ORM\JoinColumn(nullable=false)
      */
     private $rapport;
 
     /**
-     * @ORM\ManyToMany(targetEntity=MEDICAMENT::class, inversedBy="offres")
+     * @ORM\ManyToMany(targetEntity=medicament::class, inversedBy="offres")
      */
     private $medicaments;
 
@@ -57,12 +57,12 @@ class Offre
         return $this;
     }
 
-    public function getRapport(): ?RAPPORTVISITE
+    public function getRapport(): ?rapportVisite
     {
         return $this->rapport;
     }
 
-    public function setRapport(?RAPPORTVISITE $rapport): self
+    public function setRapport(?rapportVisite $rapport): self
     {
         $this->rapport = $rapport;
 
@@ -70,14 +70,14 @@ class Offre
     }
 
     /**
-     * @return Collection|MEDICAMENT[]
+     * @return Collection|medicament[]
      */
     public function getMedicaments(): Collection
     {
         return $this->medicaments;
     }
 
-    public function addMedicament(MEDICAMENT $medicament): self
+    public function addMedicament(medicament $medicament): self
     {
         if (!$this->medicaments->contains($medicament)) {
             $this->medicaments[] = $medicament;
@@ -86,7 +86,7 @@ class Offre
         return $this;
     }
 
-    public function removeMedicament(MEDICAMENT $medicament): self
+    public function removeMedicament(medicament $medicament): self
     {
         $this->medicaments->removeElement($medicament);
 

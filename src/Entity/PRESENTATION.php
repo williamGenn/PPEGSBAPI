@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Repository\PRESENTATIONRepository;
+use App\Repository\presentationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PRESENTATIONRepository::class)
+ * @ORM\Entity(repositoryClass=presentationRepository::class)
  */
 class presentation
 {
@@ -31,7 +31,7 @@ class presentation
     private $PRE_LIBELLE;
 
     /**
-     * @ORM\ManyToMany(targetEntity=MEDICAMENT::class, mappedBy="presentations")
+     * @ORM\ManyToMany(targetEntity=medicament::class, mappedBy="presentations")
      */
     private $medicaments;
 
@@ -70,14 +70,14 @@ class presentation
     }
 
     /**
-     * @return Collection|MEDICAMENT[]
+     * @return Collection|medicament[]
      */
     public function getMedicaments(): Collection
     {
         return $this->medicaments;
     }
 
-    public function addMedicament(MEDICAMENT $medicament): self
+    public function addMedicament(medicament $medicament): self
     {
         if (!$this->medicaments->contains($medicament)) {
             $this->medicaments[] = $medicament;
@@ -87,7 +87,7 @@ class presentation
         return $this;
     }
 
-    public function removeMedicament(MEDICAMENT $medicament): self
+    public function removeMedicament(medicament $medicament): self
     {
         if ($this->medicaments->removeElement($medicament)) {
             $medicament->removePresentation($this);
