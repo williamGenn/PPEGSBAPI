@@ -16,6 +16,11 @@ class COMPOSANT
 {
     /**
      * @ORM\Id
+     * @ORM\GeneratedValue
+     * @ORM\Column(type="integer")
+     */
+    private $id;
+    /**
      * @ORM\Column(type="string", length=4)
      */
     private $CMP_CODE;

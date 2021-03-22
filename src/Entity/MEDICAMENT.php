@@ -85,6 +85,11 @@ class MEDICAMENT
      */
     private $PRESCRIPTIONs;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $MED_EFFETS;
+
     public function __construct()
     {
         $this->COMPOSANTs = new ArrayCollection();
@@ -336,6 +341,18 @@ class MEDICAMENT
                 $pRESCRIPTION->setMedicaments(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getMEDEFFETS(): ?string
+    {
+        return $this->MED_EFFETS;
+    }
+
+    public function setMEDEFFETS(?string $MED_EFFETS): self
+    {
+        $this->MED_EFFETS = $MED_EFFETS;
 
         return $this;
     }

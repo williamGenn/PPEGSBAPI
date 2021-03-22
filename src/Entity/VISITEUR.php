@@ -70,6 +70,11 @@ class VISITEUR
      */
     private $acitivites_complementaires;
 
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     */
+    private $VIS_VILLE;
+
     public function __construct()
     {
         $this->rapports = new ArrayCollection();
@@ -227,6 +232,18 @@ class VISITEUR
     public function removeAcitivitesComplementaire(ACTIVITECOMPL $acitivitesComplementaire): self
     {
         $this->acitivites_complementaires->removeElement($acitivitesComplementaire);
+
+        return $this;
+    }
+
+    public function getVISVILLE(): ?string
+    {
+        return $this->VIS_VILLE;
+    }
+
+    public function setVISVILLE(?string $VIS_VILLE): self
+    {
+        $this->VIS_VILLE = $VIS_VILLE;
 
         return $this;
     }

@@ -19,6 +19,10 @@ class ACTIVITECOMPL
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
+    private $id;
+    /**
+     *@ORM\Column(type="integer")
+     */
     private $AC_NUM;
 
     /**
@@ -59,9 +63,17 @@ class ACTIVITECOMPL
 
     public function getId(): ?int
     {
+        return $this->id;
+    }
+    
+    public function setAC_NUM(int $AC_NUM) {
+        $this->AC_NUM = $AC_NUM;
+    }
+    public function getAC_NUM() : ?int
+    {
         return $this->AC_NUM;
     }
-
+    
     public function getACDATE(): ?\DateTimeInterface
     {
         return $this->AC_DATE;

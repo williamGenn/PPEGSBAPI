@@ -72,6 +72,11 @@ class PRATICIEN
      */
     private $invitations;
 
+    /**
+     * @ORM\Column(type="string", length=30, nullable=true)
+     */
+    private $PRA_PRENOM;
+
     public function __construct()
     {
         $this->RAPPORTVISITEs = new ArrayCollection();
@@ -232,6 +237,18 @@ class PRATICIEN
         if ($this->invitations->removeElement($invitation)) {
             $invitation->removeInvite($this);
         }
+
+        return $this;
+    }
+
+    public function getPRAPRENOM(): ?string
+    {
+        return $this->PRA_PRENOM;
+    }
+
+    public function setPRAPRENOM(?string $PRA_PRENOM): self
+    {
+        $this->PRA_PRENOM = $PRA_PRENOM;
 
         return $this;
     }

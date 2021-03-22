@@ -22,7 +22,7 @@ class Constitution
     /**
      * @ORM\Column(type="integer")
      */
-    private $Quantité;
+    private $Quantit;
 
     /**
      * @ORM\OneToMany(targetEntity=MEDICAMENT::class, mappedBy="constitution")
@@ -45,14 +45,14 @@ class Constitution
         return $this->id;
     }
 
-    public function getQuantité(): ?int
+    public function getQuantit(): ?int
     {
-        return $this->Quantité;
+        return $this->Quantit;
     }
 
-    public function setQuantité(int $Quantité): self
+    public function setQuantit(int $Quantit): self
     {
-        $this->Quantité = $Quantité;
+        $this->Quantit = $Quantit;
 
         return $this;
     }
