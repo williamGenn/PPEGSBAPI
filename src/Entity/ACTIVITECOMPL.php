@@ -9,10 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=ACTIVITECOMPLRepository::class)
  */
-class ACTIVITECOMPL
+class activitecompl
 {
     /**
      * @ORM\Id

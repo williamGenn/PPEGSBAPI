@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\VISITEUR;
+use App\Entity\visiteur;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class VISITEURRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, VISITEUR::class);
+        parent::__construct($registry, visiteur::class);
     }
 
     // /**

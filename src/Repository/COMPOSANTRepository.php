@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\COMPOSANT;
+use App\Entity\composant;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class COMPOSANTRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, COMPOSANT::class);
+        parent::__construct($registry, composant::class);
     }
 
     // /**

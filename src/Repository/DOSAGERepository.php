@@ -16,7 +16,7 @@ class DOSAGERepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, DOSAGE::class);
+        parent::__construct($registry, dosage::class);
     }
 
     // /**

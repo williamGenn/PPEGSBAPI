@@ -7,10 +7,9 @@ use App\Repository\DOSAGERepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=DOSAGERepository::class)
  */
-class DOSAGE
+class dosage
 {
     /**
      * @ORM\Id

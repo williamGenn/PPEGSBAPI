@@ -9,10 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=COMPOSANTRepository::class)
  */
-class COMPOSANT
+class composant
 {
     /**
      * @ORM\Id

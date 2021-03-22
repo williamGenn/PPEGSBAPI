@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=PRESCRIPTIONRepository::class)
  */
-class PRESCRIPTION
+class prescription
 {
     /**
      * @ORM\Id

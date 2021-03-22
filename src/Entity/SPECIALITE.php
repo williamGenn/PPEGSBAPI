@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=SPECIALITERepository::class)
  */
-class SPECIALITE
+class specialite
 {
     /**
      * @ORM\Id

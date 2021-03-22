@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\ACTIVITECOMPL;
+use App\Entity\activitecompl;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class ACTIVITECOMPLRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ACTIVITECOMPL::class);
+        parent::__construct($registry, activitecompl::class);
     }
 
     // /**

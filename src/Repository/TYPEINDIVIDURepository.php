@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\TYPEINDIVIDU;
+use App\Entity\typeIndividu;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class TYPEINDIVIDURepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TYPEINDIVIDU::class);
+        parent::__construct($registry, typeIndividu::class);
     }
 
     // /**

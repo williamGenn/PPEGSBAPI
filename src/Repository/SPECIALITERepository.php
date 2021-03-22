@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\SPECIALITE;
+use App\Entity\specialite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class SPECIALITERepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, SPECIALITE::class);
+        parent::__construct($registry, specialite::class);
     }
 
     // /**

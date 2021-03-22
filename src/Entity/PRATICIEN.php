@@ -9,10 +9,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=PRATICIENRepository::class)
  */
-class PRATICIEN
+class praticien
 {
     /**
      * @ORM\Id

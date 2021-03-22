@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\REGION;
+use App\Entity\region;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class REGIONRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, REGION::class);
+        parent::__construct($registry, region::class);
     }
 
     // /**

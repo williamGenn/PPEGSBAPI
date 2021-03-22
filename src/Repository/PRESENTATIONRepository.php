@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\PRESENTATION;
+use App\Entity\presentation;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class PRESENTATIONRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, PRESENTATION::class);
+        parent::__construct($registry, presentation::class);
     }
 
     // /**

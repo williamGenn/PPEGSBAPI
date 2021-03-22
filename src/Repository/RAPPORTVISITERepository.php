@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\RAPPORTVISITE;
+use App\Entity\rapportVisite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class RAPPORTVISITERepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, RAPPORTVISITE::class);
+        parent::__construct($registry, rapportVisite::class);
     }
 
     // /**

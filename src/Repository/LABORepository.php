@@ -16,7 +16,7 @@ class LABORepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, LABO::class);
+        parent::__construct($registry, labo::class);
     }
 
     // /**

@@ -7,10 +7,9 @@ use App\Repository\REGIONRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ApiResource()
  * @ORM\Entity(repositoryClass=REGIONRepository::class)
  */
-class REGION
+class region
 {
     /**
      * @ORM\Id

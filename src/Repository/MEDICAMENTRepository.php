@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\MEDICAMENT;
+use App\Entity\medicament;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class MEDICAMENTRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, MEDICAMENT::class);
+        parent::__construct($registry, medicament::class);
     }
 
     // /**

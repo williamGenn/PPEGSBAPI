@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Entity\TYPEPRATICIEN;
+use App\Entity\typePraticien;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,7 +16,7 @@ class TYPEPRATICIENRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, TYPEPRATICIEN::class);
+        parent::__construct($registry, typePraticien::class);
     }
 
     // /**
