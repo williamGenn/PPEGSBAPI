@@ -6,6 +6,7 @@ use App\Repository\visiteurRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=visiteurRepository::class)
@@ -21,57 +22,68 @@ class visiteur
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Groups("VIS")
      */
     private $VIS_MATRICULE;
 
     /**
      * @ORM\Column(type="string", length=25, nullable=true)
+     * @Groups("VIS")
      */
     private $VIS_NOM;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups("VIS")
      */
     private $VIS_PRENOM;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups("VIS")
      */
     private $VIS_ADRESSE;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
+     * @Groups("VIS")
      */
     private $VIS_CP;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups("VIS")
      */
-    private $VIs_DATEEMBAUCHE;
+    private $VIS_DATEEMBAUCHE;
 
     /**
      * @ORM\ManyToOne(targetEntity=secteur::class, inversedBy="responsables")
+     * @Groups("VIS")
      */
     private $secteur;
 
     /**
      * @ORM\OneToMany(targetEntity=rapportVisite::class, mappedBy="visiteur")
+     * @Groups("VIS_RAP")
      */
     private $rapports;
 
     /**
      * @ORM\ManyToOne(targetEntity=labo::class, inversedBy="Visiteurs")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("VIS_DEP")
      */
     private $departement;
 
     /**
      * @ORM\ManyToMany(targetEntity=activitecompl::class, inversedBy="Realisateurs")
+     * @Groups("VIS_ACC")
      */
     private $acitivites_complementaires;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
+     * @Groups("VIS")
      */
     private $VIS_VILLE;
 
@@ -146,14 +158,14 @@ class visiteur
         return $this;
     }
 
-    public function getVIsDATEEMBAUCHE(): ?\DateTimeInterface
+    public function getVISDATEEMBAUCHE(): ?\DateTimeInterface
     {
-        return $this->VIs_DATEEMBAUCHE;
+        return $this->VIS_DATEEMBAUCHE;
     }
 
-    public function setVIsDATEEMBAUCHE(?\DateTimeInterface $VIs_DATEEMBAUCHE): self
+    public function setVISDATEEMBAUCHE(?\DateTimeInterface $VIS_DATEEMBAUCHE): self
     {
-        $this->VIs_DATEEMBAUCHE = $VIs_DATEEMBAUCHE;
+        $this->VIS_DATEEMBAUCHE = $VIS_DATEEMBAUCHE;
 
         return $this;
     }

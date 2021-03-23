@@ -7,10 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
 /**
- * @ApiResource()
+ * @ApiResource(
+ *      itemOperations={"get"={"normalization_context"={"groups"={"LAB","LAB_VIS","VIS"}}}}
+ * )
  * @ORM\Entity(repositoryClass=laboRepository::class)
  */
 class labo
@@ -19,26 +22,31 @@ class labo
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("LAB")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=2)
+     * @Groups("LAB")
      */
     private $LAB_CODE;
 
     /**
      * @ORM\Column(type="string", length=10, nullable=true)
+     * @Groups("LAB")
      */
     private $LAB_NOM;
 
     /**
      * @ORM\Column(type="string", length=20, nullable=true)
+     * @Groups("LAB")
      */
     private $LAB_CHEFVENTE;
 
     /**
      * @ORM\OneToMany(targetEntity=visiteur::class, mappedBy="departement")
+     * @Groups("LAB_VIS")
      */
     private $Visiteurs;
 
