@@ -286,7 +286,7 @@ CREATE TABLE presentation (
   pre_libelle varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE rapportvisite (
+CREATE TABLE rapport_visite (
   id int(11) NOT NULL,
   visiteur_id int(11) DEFAULT NULL,
   praticien_id int(11) NOT NULL,
@@ -296,7 +296,7 @@ CREATE TABLE rapportvisite (
   rap_motif varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO rapportvisite (id, visiteur_id, praticien_id, rap_num, rap_date, rap_bilan, rap_motif) VALUES
+INSERT INTO rapport_visite (id, visiteur_id, praticien_id, rap_num, rap_date, rap_bilan, rap_motif) VALUES
 (1, 1, 23, 3, '2002-04-18 00:00:00', 'Médecin curieux, à recontacer en décembre pour réunion', 'Actualisation annuelle'),
 (2, 2, 4, 4, '2003-05-21 00:00:00', 'Changement de direction, redéfinition de la politique médicamenteuse, recours au générique', 'Baisse activité'),
 (3, 1, 41, 7, '2003-03-23 00:00:00', 'RAS\r\nChangement de tel : 05 89 89 89 89', 'Rapport Annuel');
@@ -397,20 +397,20 @@ INSERT INTO specialite (id, spe_code, spe_libelle) VALUES
 (43, 'SXL', 'sexologie'),
 (44, 'TXA', 'toxicomanie et alcoologie');
 
-CREATE TABLE typeindividu (
+CREATE TABLE type_individu (
   id int(11) NOT NULL,
   tin_code varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
   tin_libelle varchar(50) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-CREATE TABLE typepraticien (
+CREATE TABLE type_praticien (
   id int(11) NOT NULL,
   typ_code varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
   typ_libelle varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   typ_lieu varchar(35) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO typepraticien (id, typ_code, typ_libelle, typ_lieu) VALUES
+INSERT INTO type_praticien (id, typ_code, typ_libelle, typ_lieu) VALUES
 (1, 'MH', 'Médecin Hospitalier', 'Hopital ou clinique'),
 (2, 'MV', 'Médecine de Ville', 'Cabinet'),
 (3, 'PH', 'Pharmacien Hospitalier', 'Hopital ou clinique'),
@@ -584,7 +584,7 @@ ALTER TABLE prescription
 ALTER TABLE presentation
   ADD PRIMARY KEY (id);
 
-ALTER TABLE rapportvisite
+ALTER TABLE rapport_visite
   ADD PRIMARY KEY (id),
   ADD KEY IDX_1A9679F97F72333D (visiteur_id),
   ADD KEY IDX_1A9679F92391866B (praticien_id);
@@ -599,10 +599,10 @@ ALTER TABLE secteur
 ALTER TABLE specialite
   ADD PRIMARY KEY (id);
 
-ALTER TABLE typeindividu
+ALTER TABLE type_individu
   ADD PRIMARY KEY (id);
 
-ALTER TABLE typepraticien
+ALTER TABLE type_praticien
   ADD PRIMARY KEY (id);
 
 ALTER TABLE visiteur
@@ -652,7 +652,7 @@ ALTER TABLE prescription
 ALTER TABLE presentation
   MODIFY id int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE rapportvisite
+ALTER TABLE rapport_visite
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 ALTER TABLE region
@@ -664,10 +664,10 @@ ALTER TABLE secteur
 ALTER TABLE specialite
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
-ALTER TABLE typeindividu
+ALTER TABLE type_individu
   MODIFY id int(11) NOT NULL AUTO_INCREMENT;
 
-ALTER TABLE typepraticien
+ALTER TABLE type_praticien
   MODIFY id int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 ALTER TABLE visiteur
@@ -699,7 +699,7 @@ ALTER TABLE medicament_presentation
   ADD CONSTRAINT FK_31EE65EBAB627E8B FOREIGN KEY (presentation_id) REFERENCES presentation (id) ON DELETE CASCADE;
 
 ALTER TABLE offre
-  ADD CONSTRAINT FK_AF86866F1DFBCC46 FOREIGN KEY (rapport_id) REFERENCES rapportvisite (id);
+  ADD CONSTRAINT FK_AF86866F1DFBCC46 FOREIGN KEY (rapport_id) REFERENCES rapport_visite (id);
 
 ALTER TABLE offre_medicament
   ADD CONSTRAINT FK_B7C2151F4CC8505A FOREIGN KEY (offre_id) REFERENCES offre (id) ON DELETE CASCADE,
@@ -710,14 +710,14 @@ ALTER TABLE posseder
 
 ALTER TABLE praticien
   ADD CONSTRAINT FK_D9A27D3694DBAFA FOREIGN KEY (displomes_id) REFERENCES posseder (id),
-  ADD CONSTRAINT FK_D9A27D3C54C8C93 FOREIGN KEY (type_id) REFERENCES typepraticien (id);
+  ADD CONSTRAINT FK_D9A27D3C54C8C93 FOREIGN KEY (type_id) REFERENCES type_praticien (id);
 
 ALTER TABLE prescription
-  ADD CONSTRAINT FK_1FBFB8D9312B7B9 FOREIGN KEY (type_individu_id) REFERENCES typeindividu (id),
+  ADD CONSTRAINT FK_1FBFB8D9312B7B9 FOREIGN KEY (type_individu_id) REFERENCES type_individu (id),
   ADD CONSTRAINT FK_1FBFB8D94E8FD016 FOREIGN KEY (dosage_id) REFERENCES dosage (id),
   ADD CONSTRAINT FK_1FBFB8D9C403D7FB FOREIGN KEY (medicaments_id) REFERENCES medicament (id);
 
-ALTER TABLE rapportvisite
+ALTER TABLE rapport_visite
   ADD CONSTRAINT FK_1A9679F92391866B FOREIGN KEY (praticien_id) REFERENCES praticien (id),
   ADD CONSTRAINT FK_1A9679F97F72333D FOREIGN KEY (visiteur_id) REFERENCES visiteur (id);
 

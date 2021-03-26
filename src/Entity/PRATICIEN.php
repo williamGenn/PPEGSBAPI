@@ -2,14 +2,36 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\praticienRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ORM\Entity(repositoryClass=praticienRepository::class)
+ * @ApiResource(
+ *      itemOperations={
+ *          "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"PRA"}
+ *              }
+ *          }
+ *      },
+ *      collectionOperations= {
+ *           "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"PRA"}
+ *              }
+ *          }
+ *      },
+ * )
+ * @ApiFilter(SearchFilter::class, properties = {
+ *  "PRA_CP" : "partial"
+ * })
  */
 class praticien
 {
@@ -22,57 +44,68 @@ class praticien
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("PRA")
      */
     private $PRA_NUM;
 
     /**
      * @ORM\Column(type="string", length=25, nullable=true)
+     * @Groups("PRA")
      */
     private $PRA_NOM;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Groups("PRA")
      */
     private $PRA_ADRESSE;
 
     /**
      * @ORM\Column(type="string", length=5, nullable=true)
+     * @Groups("PRA")
      */
     private $PRA_CP;
 
     /**
      * @ORM\Column(type="string", length=25, nullable=true)
+     * @Groups("PRA")
      */
     private $PRA_VILLE;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups("PRA")
      */
     private $PRA_COEFNOTORIETE;
 
     /**
      * @ORM\OneToMany(targetEntity=rapportVisite::class, mappedBy="praticien")
+     * @Groups("PRA_RAP")
      */
     private $rapportVisites;
 
     /**
      * @ORM\ManyToOne(targetEntity=typePraticien::class, inversedBy="praticiens")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("PRA_TYP")
      */
     private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity=posseder::class, inversedBy="praticien")
+     * @Groups("PRA_DIP")
      */
     private $displomes;
 
     /**
      * @ORM\ManyToMany(targetEntity=activitecompl::class, mappedBy="invites")
+     * @Groups("PRA_INV")
      */
     private $invitations;
 
     /**
      * @ORM\Column(type="string", length=30, nullable=true)
+     * @Groups("PRA")
      */
     private $PRA_PRENOM;
 

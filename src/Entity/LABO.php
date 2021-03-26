@@ -7,14 +7,32 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 
 /**
  * @ApiResource(
- *      itemOperations={"get"={"normalization_context"={"groups"={"LAB","LAB_VIS","VIS"}}}}
+ *      itemOperations={
+ *          "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"LAB","LAB_VIS","VIS"}
+ *              }
+ *          }
+ *      },
+ *      collectionOperations= {
+ *           "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"LAB"}
+ *              }
+ *          }
+ *      },
  * )
  * @ORM\Entity(repositoryClass=laboRepository::class)
+ * @ApiFilter(SearchFilter::class, properties= {
+ *  "id":"exact", "LAB_CODE":"exact"
+ * })
  */
 class labo
 {
