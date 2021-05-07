@@ -6,6 +6,7 @@ use App\Repository\medicamentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=medicamentRepository::class)
@@ -16,16 +17,34 @@ class medicament
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @ApiResource(
+     *      itemOperations={
+     *          "get" = {
+     *              "normalization_context"={
+     *                  "groups"={"MED"}
+     *              }
+     *          }
+     *      },
+     *      collectionOperations= {
+     *           "get" = {
+     *              "normalization_context"={
+     *                  "groups"={"MED"}
+     *              }
+     *          }
+     *      },
+     * )
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Groups("MED")
      */
     private $MED_DEPOTLEGAL;
 
     /**
      * @ORM\Column(type="string", length=25, nullable=true)
+     * @Groups("MED")
      */
     private $MED_NOMCOMMERCIAL;
 
@@ -36,16 +55,19 @@ class medicament
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("MED")
      */
     private $MED_COMPOSITION;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("MED")
      */
     private $MED_CONTREINDIC;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Groups("MED")
      */
     private $MED_PRIXECHANTILLON;
 
@@ -87,6 +109,7 @@ class medicament
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("MED")
      */
     private $MED_EFFETS;
 
