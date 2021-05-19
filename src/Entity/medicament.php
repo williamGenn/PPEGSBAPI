@@ -11,6 +11,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=medicamentRepository::class)
+ * @ApiResource(
+ *      itemOperations={
+ *          "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"MED"}
+ *              }
+ *          }
+ *      },
+ *      collectionOperations= {
+ *           "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"MED"}
+ *              }
+ *          }
+ *      },
+ * )
  */
 class medicament
 {
@@ -18,22 +34,6 @@ class medicament
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @ApiResource(
-     *      itemOperations={
-     *          "get" = {
-     *              "normalization_context"={
-     *                  "groups"={"MED"}
-     *              }
-     *          }
-     *      },
-     *      collectionOperations= {
-     *           "get" = {
-     *              "normalization_context"={
-     *                  "groups"={"MED"}
-     *              }
-     *          }
-     *      },
-     * )
      */
     private $id;
 
