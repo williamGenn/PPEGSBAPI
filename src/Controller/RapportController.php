@@ -42,5 +42,34 @@ class RapportController extends AbstractController {
     return new Response();
 
   }
+  /**
+   * @Route("/", name="report_post", methods={"PUT"})
+   */
+  public function do_put(Request $request) {
+    $req = json_decode($request->getContent(), true);
+    $rapport = this->getDoctrine()
+    ->getRepository(rapportVisite::class)->findOneById($req["id"]);
+    $vis = $this->getDoctrine()
+    ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
+    $pra = $this->getDoctrine()
+    ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
+    var_dump($req["RAP_OFF"]);
+    $offs = $this->getDoctrine()
+    ->getRepository(Offre::class)->findById($req["RAP_OFF"]);
+    $rapport->setRAPNUM($req["RAP_NUM"]);
+    $rapport->setRAPDATE(
+      \DateTime::createFromFormat("d/m/Y",$req["RAP_DATE"])
+    );
+    $rapport->setRAPBILAN($req["RAP_BILAN"]);
+    $rapport->setRAPMOTIF($req["RAP_MOTIF"]);
+    $rapport->setVisiteur($vis);
+    $rapport->setPraticien($pra);
+    $rapport->addOffres($offs);
+    $entityManager = $this->getDoctrine()->getManager();
+    $entityManager->persist($rapport);
+    $entityManager->flush();
+    return new Response();
+
+  }
 
 }
