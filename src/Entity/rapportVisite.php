@@ -182,11 +182,15 @@ class rapportVisite
     }
     public function addOffres($offres): self
     {
+      if ($offres == null) {
+        return $this;
+      }
       foreach ($offres as &$offre) {
         if ($offre != null) {
           $this->addOffre($offre);
         }
       }
+      return $this;
     }
 
     public function removeOffre(Offre $offre): self
