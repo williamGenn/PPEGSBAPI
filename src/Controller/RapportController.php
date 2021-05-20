@@ -29,9 +29,9 @@ class RapportController extends AbstractController {
     ->getRepository(Offre::class)->findById($req["RAP_OFF"]);
     $rapport->setRAPNUM($req["RAP_NUM"]);
     $rapport->setRAPDATE(
-      \DateTime::createFromFormat("d/m/Y H:i",$req["RAP_DATE"])
+      \DateTime::createFromFormat("d/m/Y",$req["RAP_DATE"])
     );
-    $rapport->setRAPBILANT($req["RAP_BILAN"]);
+    $rapport->setRAPBILAN($req["RAP_BILAN"]);
     $rapport->setRAPMOTIF($req["RAP_MOTIF"]);
     $rapport->setVisiteur($vis);
     $rapport->setPraticien($pra);
