@@ -50,7 +50,7 @@ class OffreRepository extends ServiceEntityRepository
     public function findById($arr)
     {
       $offre_arr = array();
-      foreach ($arr as $value) {
+      foreach ($arr as &$value) {
         $offre_arr[] = $this->findOneById($value);
       }
       return $offre_arr;
