@@ -38,4 +38,4 @@ class RapportController extends AbstractController {
 
   }
 
-{
+}
