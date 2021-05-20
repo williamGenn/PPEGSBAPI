@@ -70,7 +70,7 @@ class rapportVisite
     private $visiteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity=RAPticien::class, inversedBy="rapportVisites")
+     * @ORM\ManyToOne(targetEntity=praticien::class, inversedBy="rapportVisites")
      * @ORM\JoinColumn(nullable=false)
      * @Groups("RAP_PRA")
      */
