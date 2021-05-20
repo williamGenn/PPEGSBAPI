@@ -19,17 +19,18 @@ class RapportController extends AbstractController {
    */
   public function do_post(Request $request) {
     $rapport = new rapportVisite();
-    $req = $request->request;
+    $req = json_decode($request->getContent, true);
     $vis = $this->getDoctrine()
-    ->getRepository(visiteur::class)->findOneById($req->get("RAP_VIS"));
+    ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
     $pra = $this->getDoctrine()
-    ->getRepository(praticien::class)->findOneById($req->get("RAP_PRA"));
+    ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
+    var_dump($req["RAP_OFF"]);
     $offs = $this->getDoctrine()
-    ->getRepository(Offre::class)->findById($req->get("RAP_OFF"));
-    $rapport->setRAPNUM($req->get("RAP_NUM"));
-    $rapport->setRAPDATE($req->get("RAP_DATE"));
-    $rapport->setRAPBILANT($req->get("RAP_BILAN"));
-    $rapport->setRAPMOTIF($req->get("RAP_MOTIF"));
+    ->getRepository(Offre::class)->findById($req["RAP_OFF"]);
+    $rapport->setRAPNUM($req["RAP_NUM"]);
+    $rapport->setRAPDATE($req["RAP_DATE"]);
+    $rapport->setRAPBILANT($req["RAP_BILAN"]);
+    $rapport->setRAPMOTIF($req["RAP_MOTIF"]);
     $rapport->setVisiteur($vis);
     $rapport->setPraticien($pra);
     $rapport->addOffres($offs);
