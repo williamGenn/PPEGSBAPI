@@ -48,7 +48,7 @@ class RapportController extends AbstractController {
    */
   public function do_put(Request $request) {
     $req = json_decode($request->getContent(), true);
-    $rapport = this->getDoctrine()
+    $rapport = $this->getDoctrine()
     ->getRepository(rapportVisite::class)->findOneById($req["id"]);
     $vis = $this->getDoctrine()
     ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
