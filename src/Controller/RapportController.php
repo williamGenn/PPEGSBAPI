@@ -43,7 +43,7 @@ class RapportController extends AbstractController {
 
   }
   /**
-   * @Route("/", name="report_post", methods={"PUT"})
+   * @Route("/", name="report_put", methods={"PUT"})
    */
   public function do_put(Request $request) {
     $req = json_decode($request->getContent(), true);
