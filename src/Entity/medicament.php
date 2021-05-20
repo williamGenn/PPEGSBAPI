@@ -34,6 +34,7 @@ class medicament
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("MED")
      */
     private $id;
 

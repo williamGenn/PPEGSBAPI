@@ -16,12 +16,21 @@ use Doctrine\ORM\Mapping as ORM;
  *      itemOperations={
  *          "get" = {
  *              "normalization_context"={
-*                  "groups"={"RAP","RAP_PRA","RAP_OFF","RAP_VIS","VIS","PRA","OFF","OFF_MED","MED"}
+ *                 "groups"={"RAP","RAP_PRA","RAP_OFF","RAP_VIS","VIS","PRA","OFF","OFF_MED","MED"}
  *              }
  *          },
- *          "post"
+ *          "put" = {
+ *              "denormalization_context"={
+ *                 "groups"={"RAP","RAP_PRA","RAP_OFF","RAP_VIS","VIS","PRA","OFF","OFF_MED","MED"}
+ *              }
+ *          },
  *      },
  *      collectionOperations= {
+ *           "post" = {
+ *              "denormalization_context"={
+ *                 "groups"={"RAP","RAP_PRA","RAP_OFF","RAP_VIS","VIS","PRA","OFF","OFF_MED","MED"}
+ *              }
+ *            }
  *           "get" = {
  *              "normalization_context"={
  *                  "groups"={"RAP"}
@@ -36,6 +45,7 @@ class rapportVisite
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("RAP")
      */
     private $id;
 

@@ -38,6 +38,7 @@ class visiteur
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("VIS")
      */
     private $id;
 
