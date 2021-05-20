@@ -33,6 +33,8 @@ class RapportController extends AbstractController {
     $rapport->setVisiteur($vis);
     $rapport->setPraticien($pra);
     $rapport->addOffres($offs);
+    $entityManager = $this->getDoctrine()->getManager();
+    $entityManager->persist($rapport);
 
   }
 
