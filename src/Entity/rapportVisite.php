@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\rapportVisiteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,6 +12,23 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=rapportVisiteRepository::class)
+ * @ApiResource(
+ *      itemOperations={
+ *          "get" = {
+ *              "normalization_context"={
+*                  "groups"={"RAP","RAP_PRA","RAP_OFF","RAP_VIS","VIS","PRA","OFF","OFF_MED","MED"}
+ *              }
+ *          },
+ *          "post"
+ *      },
+ *      collectionOperations= {
+ *           "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"RAP"}
+ *              }
+ *          }
+ *      },
+ * )
  */
 class rapportVisite
 {
@@ -22,37 +41,44 @@ class rapportVisite
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("RAP")
      */
     private $RAP_NUM;
 
     /**
      * @ORM\Column(type="datetime", nullable=true)
+     * @Groups("RAP")
      */
     private $RAP_DATE;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("RAP")
      */
     private $RAP_BILAN;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("RAP")
      */
     private $RAP_MOTIF;
 
     /**
      * @ORM\ManyToOne(targetEntity=visiteur::class, inversedBy="rapports")
+     * @Groups("RAP_VIS")
      */
     private $visiteur;
 
     /**
-     * @ORM\ManyToOne(targetEntity=praticien::class, inversedBy="rapportVisites")
+     * @ORM\ManyToOne(targetEntity=RAPticien::class, inversedBy="rapportVisites")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("RAP_PRA")
      */
     private $praticien;
 
     /**
      * @ORM\OneToMany(targetEntity=Offre::class, mappedBy="rapport")
+     * @Groups("RAP_OFF")
      */
     private $offres;
 
