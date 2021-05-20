@@ -180,6 +180,14 @@ class rapportVisite
 
         return $this;
     }
+    public function addOffres($offres): self
+    {
+      foreach ($ofrees as $offre) {
+        if ($offre != null) {
+          $this->addOffre($offre);
+        }
+      }
+    }
 
     public function removeOffre(Offre $offre): self
     {

@@ -47,4 +47,13 @@ class visiteurRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findOneById($value): ?visiteur
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

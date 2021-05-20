@@ -47,4 +47,13 @@ class praticienRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findOneById($value): ?praticien
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }

@@ -47,4 +47,21 @@ class OffreRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findById($arr)
+    {
+      $offre_arr = array();
+      foreach ($arr as $value) {
+        $offre_arr[] = $this->findOneById($value);
+      }
+      return $offre_arr;
+    }
+    public function findOneById($value): ?Offre
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
