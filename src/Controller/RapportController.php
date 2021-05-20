@@ -19,7 +19,7 @@ class RapportController extends AbstractController {
    */
   public function do_post(Request $request) {
     $rapport = new rapportVisite();
-    $req = json_decode($request->getContent, true);
+    $req = json_decode($request->getContent(), true);
     $vis = $this->getDoctrine()
     ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
     $pra = $this->getDoctrine()
@@ -28,7 +28,9 @@ class RapportController extends AbstractController {
     $offs = $this->getDoctrine()
     ->getRepository(Offre::class)->findById($req["RAP_OFF"]);
     $rapport->setRAPNUM($req["RAP_NUM"]);
-    $rapport->setRAPDATE($req["RAP_DATE"]);
+    $rapport->setRAPDATE(
+      \DateTime::createFromFormat("d/m/Y H:i",$req["RAP_DATE"])
+    );
     $rapport->setRAPBILANT($req["RAP_BILAN"]);
     $rapport->setRAPMOTIF($req["RAP_MOTIF"]);
     $rapport->setVisiteur($vis);
