@@ -24,8 +24,8 @@ class RapportController extends AbstractController {
     ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
     $pra = $this->getDoctrine()
     ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
-    $offs = $this->getDoctrine()
-    ->getRepository(Offre::class)->findOrCreateSeveral($req["RAP_OFF"]);
+    $offs = $this->getDoctrine()->getRepository(Offre::class)
+    ->findOrCreateSeveral($req["RAP_OFF"], $this->getDoctrine());
     $rapport->setRAPNUM($req["RAP_NUM"]);
     $rapport->setRAPDATE(
       \DateTime::createFromFormat("d/m/Y",$req["RAP_DATE"])
@@ -46,14 +46,17 @@ class RapportController extends AbstractController {
    */
   public function do_put(Request $request) {
     $req = json_decode($request->getContent(), true);
+    if ($req == null) {
+      throw new BadRequestHttpException('Bad JSON');
+    }
     $rapport = $this->getDoctrine()
     ->getRepository(rapportVisite::class)->findOneById($req["id"]);
     $vis = $this->getDoctrine()
     ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
     $pra = $this->getDoctrine()
     ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
-    $offs = $this->getDoctrine()
-    ->getRepository(Offre::class)->findById($req["RAP_OFF"]);
+    $offs = $this->getDoctrine()->getRepository(Offre::class)
+    ->findOrCreateSeveral($req["RAP_OFF"], $this->getDoctrine());
     $rapport->setRAPNUM($req["RAP_NUM"]);
     $rapport->setRAPDATE(
       \DateTime::createFromFormat("d/m/Y",$req["RAP_DATE"])
