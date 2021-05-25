@@ -68,6 +68,9 @@ class RapportController extends AbstractController {
     $rapport->addOffres($offs);
     $entityManager = $this->getDoctrine()->getManager();
     $entityManager->persist($rapport);
+    foreach ($offs as $off) {
+      $entityManager->persist($off);
+    }
     $entityManager->flush();
     return new Response();
 
