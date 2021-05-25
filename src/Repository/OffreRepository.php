@@ -72,6 +72,7 @@ class OffreRepository extends ServiceEntityRepository
       $off->setQuantite((int)$array["Quantite"]);
       $meds = $doctrine->getRepository(medicament::class)->findById($array["Medicaments"]);
       $off->addMedicaments($meds);
+      return $off;
     }
 
     public function findOrCreateSeveral($array, $doctrine) {
