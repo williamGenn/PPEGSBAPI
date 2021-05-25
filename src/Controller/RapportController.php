@@ -36,6 +36,9 @@ class RapportController extends AbstractController {
     $rapport->setPraticien($pra);
     $rapport->addOffres($offs);
     $entityManager = $this->getDoctrine()->getManager();
+    foreach ($rapport->getOffres() as $off) {
+      $entityManager->persist($off);
+    }
     $entityManager->persist($rapport);
     $entityManager->flush();
     return new Response($rapport->getId());
@@ -68,7 +71,7 @@ class RapportController extends AbstractController {
     $rapport->addOffres($offs);
     $entityManager = $this->getDoctrine()->getManager();
     $entityManager->persist($rapport);
-    foreach ($offs as $off) {
+    foreach ($rapport->getOffres() as $off) {
       $entityManager->persist($off);
     }
     $entityManager->flush();
