@@ -61,7 +61,7 @@ class medicamentRepository extends ServiceEntityRepository
       }
       return $offre_arr;
     }
-    public function findOneById($value): ?Offre
+    public function findOneById($value): ?medicament
     {
         return $this->createQueryBuilder('v')
             ->andWhere('v.id = :val')
