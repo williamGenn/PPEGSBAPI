@@ -83,6 +83,7 @@ class OffreRepository extends ServiceEntityRepository
           $offres[] = $a;
         }
       }
+      return $offres;
     }
 
     public function findOneById($value): ?Offre
