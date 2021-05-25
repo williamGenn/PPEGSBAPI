@@ -54,7 +54,10 @@ class medicamentRepository extends ServiceEntityRepository
       }
       $offre_arr = array();
       foreach ($arr as &$value) {
-        $offre_arr[] = $this->findOneById($value);
+        $a = $this->findOneById($value);
+        if ($a != null) {
+          $offre_arr[] = $a;
+        }
       }
       return $offre_arr;
     }
