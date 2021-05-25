@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Offre;
+use App\Entity\medicament;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -58,6 +59,31 @@ class OffreRepository extends ServiceEntityRepository
       }
       return $offre_arr;
     }
+
+    public function findOrCreate($idOrArray, $doctrine) {
+      if (is_array($idOrArray)) {
+        return $this->create($idOrArray, $doctrine);
+      }
+      return $this->findOneBy($idOrArray);
+    }
+
+    public function create($array, $doctrine) {
+      $off =  new Offre();
+      $off->setQuantite((int)$array["Quantite"]);
+      $meds = $doctrine->getRepository(medicament::class)->findById((int)$array["Medicaments"]);
+      $off->addMedicaments($meds);
+    }
+
+    public function findOrCreateSeveral($array, $doctrine) {
+      $offres = array();
+      foreach ($array as $value) {
+        $a = $this->findOrCreate($value, $doctrine);
+        if ($a != null) {
+          $offres[] = $a;
+        }
+      }
+    }
+
     public function findOneById($value): ?Offre
     {
         return $this->createQueryBuilder('v')

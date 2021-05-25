@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\OffreRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -10,6 +11,22 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=OffreRepository::class)
+ * @ApiResource(
+ *      itemOperations={
+ *          "get" = {
+ *              "normalization_context"={
+*                  "groups"={"OFF"}
+ *              }
+ *          },
+ *      },
+ *      collectionOperations= {
+ *           "get" = {
+ *              "normalization_context"={
+ *                  "groups"={"OFF"}
+ *              }
+ *          }
+ *      },
+ * )
  */
 class Offre
 {
@@ -87,6 +104,12 @@ class Offre
         }
 
         return $this;
+    }
+
+    public function addMedicaments($medicaments) {
+      foreach ($medicaments as $medicament) {
+        $this->addMedicament($medicament);
+      }
     }
 
     public function removeMedicament(medicament $medicament): self

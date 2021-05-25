@@ -47,4 +47,24 @@ class medicamentRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findById($arr)
+    {
+      if ($arr == null) {
+        return null;
+      }
+      $offre_arr = array();
+      foreach ($arr as &$value) {
+        $offre_arr[] = $this->findOneById($value);
+      }
+      return $offre_arr;
+    }
+    public function findOneById($value): ?Offre
+    {
+        return $this->createQueryBuilder('v')
+            ->andWhere('v.id = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
 }
