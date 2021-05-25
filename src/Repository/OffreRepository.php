@@ -70,7 +70,7 @@ class OffreRepository extends ServiceEntityRepository
     public function create($array, $doctrine) {
       $off =  new Offre();
       $off->setQuantite((int)$array["Quantite"]);
-      $meds = $doctrine->getRepository(medicament::class)->findById((int)$array["Medicaments"]);
+      $meds = $doctrine->getRepository(medicament::class)->findById($array["Medicaments"]);
       $off->addMedicaments($meds);
     }
 
