@@ -24,7 +24,6 @@ class RapportController extends AbstractController {
     ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
     $pra = $this->getDoctrine()
     ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
-    var_dump($req["RAP_OFF"]);
     $offs = $this->getDoctrine()
     ->getRepository(Offre::class)->findById($req["RAP_OFF"]);
     $rapport->setRAPNUM($req["RAP_NUM"]);
@@ -53,7 +52,6 @@ class RapportController extends AbstractController {
     ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
     $pra = $this->getDoctrine()
     ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
-    var_dump($req["RAP_OFF"]);
     $offs = $this->getDoctrine()
     ->getRepository(Offre::class)->findById($req["RAP_OFF"]);
     $rapport->setRAPNUM($req["RAP_NUM"]);
