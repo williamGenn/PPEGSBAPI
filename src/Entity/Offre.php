@@ -34,6 +34,7 @@ class Offre
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("OFF")
      */
     private $id;
 

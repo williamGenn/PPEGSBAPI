@@ -39,6 +39,7 @@ class praticien
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("PRA")
      */
     private $id;
 
