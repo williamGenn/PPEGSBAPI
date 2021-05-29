@@ -15,14 +15,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *      itemOperations={
  *          "get" = {
  *              "normalization_context"={
-*                  "groups"={"OFF"}
+ *                  "groups"={"OFF","OFF_MED","MED_ID"}
  *              }
  *          },
  *      },
  *      collectionOperations= {
  *           "get" = {
  *              "normalization_context"={
- *                  "groups"={"OFF"}
+ *                  "groups"={"OFF","OFF_MED","MED_ID"}
  *              }
  *          }
  *      },
