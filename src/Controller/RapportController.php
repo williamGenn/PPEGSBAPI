@@ -28,7 +28,7 @@ class RapportController extends AbstractController {
     ->findOrCreateSeveral($req["RAP_OFF"], $this->getDoctrine());
     $rapport->setRAPNUM($req["RAP_NUM"]);
     $rapport->setRAPDATE(
-      \DateTime::createFromFormat("d/m/Y",$req["RAP_DATE"])
+      \DateTime::createFromFormat("Y-m-d",$req["RAP_DATE"])
     );
     $rapport->setRAPBILAN($req["RAP_BILAN"]);
     $rapport->setRAPMOTIF($req["RAP_MOTIF"]);
@@ -62,12 +62,13 @@ class RapportController extends AbstractController {
     ->findOrCreateSeveral($req["RAP_OFF"], $this->getDoctrine());
     $rapport->setRAPNUM($req["RAP_NUM"]);
     $rapport->setRAPDATE(
-      \DateTime::createFromFormat("d/m/Y",$req["RAP_DATE"])
+      \DateTime::createFromFormat("Y-m-d",$req["RAP_DATE"])
     );
     $rapport->setRAPBILAN($req["RAP_BILAN"]);
     $rapport->setRAPMOTIF($req["RAP_MOTIF"]);
     $rapport->setVisiteur($vis);
     $rapport->setPraticien($pra);
+    $rapport->removeOffres();
     $rapport->addOffres($offs);
     $entityManager = $this->getDoctrine()->getManager();
     $entityManager->persist($rapport);

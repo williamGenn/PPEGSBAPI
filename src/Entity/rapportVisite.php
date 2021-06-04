@@ -193,7 +193,12 @@ class rapportVisite
       }
       return $this;
     }
-
+    public function removeOffres() {
+      $offres = $this->getOffres();
+      foreach ($offres as $offre) {
+        $this->removeOffre($offre);
+      }
+    }
     public function removeOffre(Offre $offre): self
     {
         if ($this->offres->removeElement($offre)) {
