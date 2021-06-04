@@ -23,7 +23,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      collectionOperations= {
  *           "get" = {
  *              "normalization_context"={
- *                  "groups"={"RAP"}
+ *                  "groups"={"RAP","RAP_PRA","RAP_OFF","RAP_VIS","VIS","PRA","OFF","OFF_MED","MED"}
  *              }
  *          }
  *      },
