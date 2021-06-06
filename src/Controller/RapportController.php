@@ -3,6 +3,7 @@
 namespace App\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\rapportVisite;
@@ -41,7 +42,7 @@ class RapportController extends AbstractController {
     }
     $entityManager->persist($rapport);
     $entityManager->flush();
-    return new Response($rapport->getId());
+    return new JsonResponse(["id" => $rapport->getId()]);
 
   }
   /**
@@ -76,7 +77,7 @@ class RapportController extends AbstractController {
       $entityManager->persist($off);
     }
     $entityManager->flush();
-    return new Response();
+    return new JsonResponse(["id" => $rapport->getId()]);
 
   }
 
