@@ -85,6 +85,7 @@ class rapportVisite
     public function __construct()
     {
         $this->offres = new ArrayCollection();
+        $this->RAP_NUM=0;
     }
 
     public function getId(): ?int

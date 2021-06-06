@@ -27,7 +27,6 @@ class RapportController extends AbstractController {
     ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
     $offs = $this->getDoctrine()->getRepository(Offre::class)
     ->findOrCreateSeveral($req["RAP_OFF"], $this->getDoctrine());
-    $rapport->setRAPNUM($req["RAP_NUM"]);
     $rapport->setRAPDATE(
       \DateTime::createFromFormat("Y-m-d",$req["RAP_DATE"])
     );
@@ -61,7 +60,6 @@ class RapportController extends AbstractController {
     ->getRepository(praticien::class)->findOneById($req["RAP_PRA"]);
     $offs = $this->getDoctrine()->getRepository(Offre::class)
     ->findOrCreateSeveral($req["RAP_OFF"], $this->getDoctrine());
-    $rapport->setRAPNUM($req["RAP_NUM"]);
     $rapport->setRAPDATE(
       \DateTime::createFromFormat("Y-m-d",$req["RAP_DATE"])
     );
