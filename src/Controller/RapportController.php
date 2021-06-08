@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use App\Entity\rapportVisite;
 use App\Entity\visiteur;
 use App\Entity\praticien;
@@ -54,6 +56,10 @@ class RapportController extends AbstractController {
     }
     $rapport = $this->getDoctrine()
     ->getRepository(rapportVisite::class)->findOneById($req["id"]);
+    if ($rapport == null) {
+      throw $this->createNotFoundException("No report with id ".strval($req["id"]));
+    }
+
     $vis = $this->getDoctrine()
     ->getRepository(visiteur::class)->findOneById($req["RAP_VIS"]);
     $pra = $this->getDoctrine()
