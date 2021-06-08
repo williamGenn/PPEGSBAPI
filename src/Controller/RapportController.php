@@ -73,13 +73,17 @@ class RapportController extends AbstractController {
     $rapport->setRAPMOTIF($req["RAP_MOTIF"]);
     $rapport->setVisiteur($vis);
     $rapport->setPraticien($pra);
+    $entityManager = $this->getDoctrine()->getManager();
+    foreach ($rapport->getOffres() as $off) {
+      $entityManager->remove($off);
+    }
     $rapport->removeOffres();
     $rapport->addOffres($offs);
-    $entityManager = $this->getDoctrine()->getManager();
     $entityManager->persist($rapport);
     foreach ($rapport->getOffres() as $off) {
       $entityManager->persist($off);
     }
+
     $entityManager->flush();
     return new JsonResponse(["id" => $rapport->getId()]);
 
