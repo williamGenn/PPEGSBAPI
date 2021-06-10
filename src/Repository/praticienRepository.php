@@ -47,6 +47,11 @@ class praticienRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getDeps()
+    {
+      $sql = "SELECT DISTINCT SUBSTRING(p.PRA_CP,1,2) AS CP FROM App\Entity\praticien p";
+       return $this->getEntityManager()->createQuery($sql)->getResult();
+    }
     public function findOneById($value): ?praticien
     {
         return $this->createQueryBuilder('v')
